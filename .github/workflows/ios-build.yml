@@ -36,7 +36,7 @@ jobs:
       run: buildozer ios release
     
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: success()
       with:
         name: ios-app
