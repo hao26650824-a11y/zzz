@@ -1,6 +1,3 @@
-name: Install build dependencies
-run: pip install packaging
-
 name: Build iOS App
 
 on:
@@ -27,7 +24,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         pip install --upgrade pip
-        pip install buildozer cython kivy kivy-ios
+        pip install cython==0.29.36 kivy-ios
     
     - name: Rename main file
       run: |
@@ -35,12 +32,14 @@ jobs:
           mv main_kivy.py main.py
         fi
     
-    - name: Build iOS
-      run: buildozer ios release
-    
+    - name: Build with kivy-ios
+      run: |
+        toolchain build kivy
+        toolchain create YourApp .
+        
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       if: success()
       with:
         name: ios-app
-        path: bin/*.ipa
+        path: YourApp-ios/
