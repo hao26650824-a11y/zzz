@@ -1,3 +1,6 @@
+name: Install build dependencies
+run: pip install packaging
+
 name: Build iOS App
 
 on:
