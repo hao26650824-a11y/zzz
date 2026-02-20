@@ -34,12 +34,12 @@ jobs:
     
     - name: Build with kivy-ios
       run: |
-        toolchain build kivy
-        toolchain create YourApp .
+        toolchain build python3 kivy
+        toolchain create MomBirthday .
         
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       if: success()
       with:
         name: ios-app
-        path: YourApp-ios/
+        path: MomBirthday-ios/
